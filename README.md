@@ -10,7 +10,7 @@ ALA python code (see [1]). The implementation uses python+pytorch
 
 ALA has been tested on the following Machine Learning applications:
 
-## Machine Learning applications
+## Machine Learning applications:
 
 -Adult
 -Ailerons
