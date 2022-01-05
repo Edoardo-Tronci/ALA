@@ -12,17 +12,11 @@ ALA has been tested on the following Machine Learning applications:
 
 ## Machine Learning applications
 
-1. 48 problemi del lavoro [2] (in cui evidenziano curvature negative). I sif dei problemi sono nella cartella `/home/giampo/sif`
 > ```
-'HEART8LS','OSBORNEB','LOGHAIRY','ECKERLE4LS','MISRA1ALS',
-'DENSCHND','HEART6LS','BIGGS6','ROSZMAN1LS','NELSONLS','HAHN1LS','BENNETT5LS',
-'MEYER3','MGH10LS','OSBORNEA','GROWTHLS','LANCZOS3LS','HUMPS','LANCZOS2LS',
-'DENSCHNE','DANWOODLS','ENGVAL2','BEALE','ALLINITU',
-'DJTL','ENSOLS','EXPFIT','HAIRY','KOWOSB','RAT43LS','SINEVAL',
-'SNAIL','HATFLDE','HATFLDD','RAT42LS','DECONVU','GULF',
-'HELIX', 'LANCZOS1LS', 'MGH09LS', 'POWELLBSLS', 'MGH17LS',
-'THURBERLS', 'CHWIRUT1LS', 'CHWIRUT2LS', 'HYDC20LS',
-'VIBRBEAM', 'KIRBY2LS'
+'Adult','Ailerons','Appliances Energy Prediction','Arcene','BlogFeedback',
+'Boston House Prices','Breast Cancer Wisconsin (Diagnostic)','CIFAR 10','Gisette','Iris','MNIST Handwritten Digit','Mv',
+'QSAR Oral Toxicity','YearPred
+```
 
  ## AUTORI
  #### A. De Santis<sup>1</sup>, G. Liuzzi<sup>1</sup>, S. Lucidi<sup>1</sup>, E.M. Tronci<sup>1</sup>
