@@ -12,11 +12,20 @@ ALA has been tested on the following Machine Learning applications:
 
 ## Machine Learning applications
 
-> ```
-'Adult','Ailerons','Appliances Energy Prediction','Arcene','BlogFeedback',
-'Boston House Prices','Breast Cancer Wisconsin (Diagnostic)','CIFAR 10','Gisette','Iris','MNIST Handwritten Digit','Mv',
-'QSAR Oral Toxicity','YearPred
-```
+-Adult
+-Ailerons
+-Appliances Energy Prediction
+-Arcene
+-BlogFeedback
+-Boston House Prices
+-Breast Cancer Wisconsin (Diagnostic)
+-CIFAR 10
+-Gisette
+-Iris
+-MNIST Handwritten Digit
+-Mv
+-QSAR Oral Toxicity
+-YearPred
 
  ## AUTORI
  #### A. De Santis<sup>1</sup>, G. Liuzzi<sup>1</sup>, S. Lucidi<sup>1</sup>, E.M. Tronci<sup>1</sup>
