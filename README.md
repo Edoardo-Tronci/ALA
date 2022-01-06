@@ -12,9 +12,9 @@ ALA python code (see [1]). The implementation uses python+pytorch
 
 ALA has been tested on the following Machine Learning applications:
 
--Adult
--Ailerons
-'Appliances Energy Prediction', 'Arcene', 'BlogFeedback', 'Boston House Prices',
+- Adult
+- Ailerons
+- Appliances Energy Prediction', 'Arcene', 'BlogFeedback', 'Boston House Prices',
 'Breast Cancer Wisconsin (Diagnostic)', 'CIFAR 10', 'Gisette', 'Iris', 'MNIST Handwritten Digit',
 'Mv', 'QSAR Oral Toxicity', 'YearPred'
 
