@@ -657,7 +657,7 @@ def NWTNM(funct,grad,hessdir,x,gmin,maxls,max_time,iprint,satura,hd_exact,name,r
 			if ((gmax <= gmin) or ((d_norm+s_norm) <= 1.e-16) or (k+ktot > maxls) or (time.time()-start_time > max_time) or
 				( not satura and ((torch.abs(f-fold)/torch.abs(fold) <= 1.e-2) or (gmax <= 1.e-1*g0max)) ) ):
 				if (iprint >= 0):
-					fid = open("Results/" + t + "_" + c + '.txt','a')		
+					fid = open(t + "_" + c + '.txt','a')		
 					print('%13s & %5d & %5d & %5d & %5d & %5d & %6d & %9d & %12.5e & %12.5e & %9.2f\\' % (name,r,nneu,k,ktot+k,nf,ng,nitertot,f,g_norm,time.time()-start_time),file=fid)
 					fid.close()
 # 					print('\n    ==================================================')
