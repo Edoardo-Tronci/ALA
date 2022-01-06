@@ -53,7 +53,7 @@ neurons = [30, 40, 50]
 
 for t in trunc:
     for c in curv:
-        fid = open("Results/" + t + "_" + c + '.txt','a')
+        fid = open(t + "_" + c + '.txt','a')
         fid.truncate(0)
         print('         Name &  perm &  nneu &     K &  KTOT &    Nf &     Ng &      Nint &            f &       g_norm &      time',file=fid)
         fid.close()
