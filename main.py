@@ -342,7 +342,7 @@ for t in trunc:
                                 ott.n_iter = 0
                                 f_0 = funct(x)
                                 #fstar,xstar,niter,nf,ng,nneg,timeparz = ott.NWTNM(fun_closure,grad,hessdir3,x,tol,maxiter,maxtim,iprint,satura,hd_exact)
-                                fstar,xstar,niter,nf,ng,nneg,timeparz = ott.NWTNM(funct,grad,hessdir3,x,tol,maxiter,maxtim,iprint,satura,hd_exact,name,r,nneu,c,t)
+                                fstar,xstar,niter,nf,ng,nneg,timeparz = ott.NWTNM(funct,grad,hessdir3,x,tol,maxiter,maxtim,iprint,satura,hd_exact,name,r,nneu,c,t, f_0)
                             elif which_algo == 'sgd':
                                 optimizer = torch.optim.SGD(net.parameters(), lr=0.01)
                     
