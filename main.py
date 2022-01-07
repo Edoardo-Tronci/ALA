@@ -1,7 +1,6 @@
 import time
 import numpy as np
 import torch
-import matplotlib.pyplot as plt
 import importlib
 from sklearn.model_selection import train_test_split
 from sklearn.utils import shuffle
@@ -43,7 +42,7 @@ curv = ["Curv", "Nocurv"]
 
 list_data_names = ["adult", "ailerons", "appliances", "arcene", "blogfeed",
                     "boston_house", "breast_cancer", "cifar10", "gisette",
-                    "iris", "mnist", "mv", "qsar", "power", "yearpred"]
+                    "iris", "mnist", "mv", "qsar"]
 
 random_seeds = [1, 2, 3, 4]
 
