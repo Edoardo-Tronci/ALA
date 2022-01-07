@@ -55,7 +55,7 @@ for t in trunc:
     for c in curv:
         fid = open("Results/" + t + "_" + c + '.txt','a')
         fid.truncate(0)
-        print('         Name &  perm &  nneu &     K &  KTOT &    Nf &     Ng &      Nint &            f &       g_norm &      time\\\\\\\hline',file=fid)
+        print('         Name &  perm &  nneu &     K &  KTOT &    Nf &     Ng &      Nint &            f_0 &            f &       g_norm &      time\\\\\\\hline',file=fid)
         fid.close()
         for name in list_data_names:
             for r in random_seeds:
@@ -341,9 +341,6 @@ for t in trunc:
                             elif which_algo == 'troncato':
                                 ott.n_iter = 0
                                 f_0 = funct(x)
-                                fid = open("Results/" + 'valore_iniziale.txt','a')		
-                                print('%13s & %5d & %5d & %12.5e\\\\' % (name,r,nneu,f_0), file=fid)
-                                fid.close()
                                 #fstar,xstar,niter,nf,ng,nneg,timeparz = ott.NWTNM(fun_closure,grad,hessdir3,x,tol,maxiter,maxtim,iprint,satura,hd_exact)
                                 fstar,xstar,niter,nf,ng,nneg,timeparz = ott.NWTNM(funct,grad,hessdir3,x,tol,maxiter,maxtim,iprint,satura,hd_exact,name,r,nneu,c,t)
                             elif which_algo == 'sgd':
