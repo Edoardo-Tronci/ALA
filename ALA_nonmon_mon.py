@@ -554,7 +554,7 @@ def dir(funct,grad,hessdir,n,k,x,g,ng,ninoposdef,nitronc,iprint,hd_exact,c,t):
 
 
 
-def NWTNM(funct,grad,hessdir,x,gmin,maxls,max_time,iprint,satura,hd_exact,name,r,nneu,c,t):
+def NWTNM(funct,grad,hessdir,x,gmin,maxls,max_time,iprint,satura,hd_exact,name,r,nneu,c,t,f_0):
 	n          = x.shape
 	ndim       = x.numel()
 	m          = 100
@@ -657,7 +657,7 @@ def NWTNM(funct,grad,hessdir,x,gmin,maxls,max_time,iprint,satura,hd_exact,name,r
 				( not satura and ((torch.abs(f-fold)/torch.abs(fold) <= 1.e-2) or (gmax <= 1.e-1*g0max)) ) ):
 				if (iprint >= 0):
 					fid = open(t + "_" + c + '.txt','a')		
-					print('%13s & %5d & %5d & %5d & %5d & %5d & %6d & %9d & %12.5e & %12.5e & %9.2f\\' % (name,r,nneu,k,ktot+k,nf,ng,nitertot,f,g_norm,time.time()-start_time),file=fid)
+					print('%13s & %5d & %5d & %5d & %5d & %5d & %6d & %9d & %12.5e & %12.5e & %12.5e & %9.2f\\' % (name,r,nneu,k,ktot+k,nf,ng,nitertot,f_0,f,g_norm,time.time()-start_time),file=fid)
 					fid.close()
 # 					print('\n    ==================================================')
 # 					print(  '    CRITERIO DI ARRESTO SODDISFATTO CON NORMA INFINITO')
