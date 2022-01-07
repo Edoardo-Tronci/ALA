@@ -19,9 +19,9 @@ y = ailerons.target
 scalerx = StandardScaler()
 scalery = StandardScaler()
 scalerx.fit(X)
-scalery.fit(y.values.reshape(-1,1))
+scalery.fit(y.reshape(-1,1))
 
 X_train = scalerx.transform(X)
-y_train = scalery.transform(y.values.reshape(-1,1))
+y_train = scalery.transform(y.reshape(-1,1))
 
-# print(X_train.shape," ",y_train.shape) 
+# print(X_train.shape," ",y_train.shape)

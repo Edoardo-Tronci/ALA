@@ -9,7 +9,7 @@ from sklearn.utils import shuffle
 
 # print('******* BOSTON HOUSE PRICES ***********')
 
-housesal = fetch_openml(name='boston_house',version=1,as_frame=True)
+housesal = fetch_openml(name='boston_house',as_frame=True)
 
 # print(housesal.data.shape)
 # print(housesal.details['version'])
@@ -50,8 +50,6 @@ scalerx.fit(X)
 scalery.fit(y.reshape(-1,1))
 
 X_train = scalerx.transform(X)
-y_train = scalery.transform(y.reshape(-1,1)) 
+y_train = scalery.transform(y.reshape(-1,1))
 
 # print(X_train.shape," ",y_train.shape)
-
-

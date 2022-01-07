@@ -12,7 +12,7 @@ arcene = fetch_openml(name='arcene',version=1)
 # print(arcene.details['version'])
 X = arcene.data
 y = arcene.target
-y = y.to_frame()
+#y = y.to_frame()
 
 # print(X.shape," ",y.shape)
 # print('number of distinct values in target: ',len(np.unique(y)),'\n')
@@ -20,7 +20,7 @@ y = y.to_frame()
 scalerx = StandardScaler()
 scalery = StandardScaler()
 scalerx.fit(X)
-scalery.fit(y.values.reshape(-1,1))
+scalery.fit(y.reshape(-1,1))
 
 X_train = scalerx.transform(X)
-y_train = scalery.transform(y.values.reshape(-1,1)) 
+y_train = scalery.transform(y.reshape(-1,1)) 

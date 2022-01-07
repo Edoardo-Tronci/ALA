@@ -4,7 +4,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.utils import shuffle
 
 # print('************* APPLIANCES ENERGY PREDICTION ****************')
-df = pd.read_csv('appliances.csv', sep=',',header=0)
+df = pd.read_csv('Datasets/appliances.csv', sep=',',header=0)
 
 # print(df.head())
 # print(df.values[0,0])

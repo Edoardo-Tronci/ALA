@@ -7,7 +7,7 @@ from sklearn.utils import shuffle
 
 # print('************* QSAR ORAL TOXICITY ****************')
 
-df = pd.read_csv('qsar.csv', delimiter = ";", header = None)
+df = pd.read_csv('Datasets/qsar.csv', delimiter = ";", header = None)
 # print(df.shape)
 
 last_ix = len(df.columns) - 1
@@ -16,7 +16,7 @@ Xtr, ytr = df.drop(last_ix, axis=1).to_numpy(), df[last_ix].to_numpy()
 ytr = LabelEncoder().fit_transform(ytr).reshape(-1, 1)
 
 # print(Xtr.shape," ",ytr.shape)
-# print('number of distinct values in target: ',len(np.unique(ytr)),'\n') 
+# print('number of distinct values in target: ',len(np.unique(ytr)),'\n')
 
 scalerx = StandardScaler()
 scalery = StandardScaler()

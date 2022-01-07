@@ -6,7 +6,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.utils import shuffle
 
 # print('************* ADULT ****************')
-df = pd.read_csv('adult.csv', delimiter = ";", header = None, na_values='?')
+df = pd.read_csv('Datasets/adult.csv', delimiter = ";", header = None, na_values='?')
 df = df.dropna()
 # print(df.shape)
 
@@ -17,7 +17,7 @@ Xtr = OrdinalEncoder().fit_transform(X)
 ytr = LabelEncoder().fit_transform(y).reshape(-1, 1)
 
 # print(Xtr.shape," ",ytr.shape)
-# print('number of distinct values in target: ',len(np.unique(ytr)),'\n') 
+# print('number of distinct values in target: ',len(np.unique(ytr)),'\n')
 
 scalerx = StandardScaler()
 scalery = StandardScaler()

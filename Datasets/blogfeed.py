@@ -4,7 +4,7 @@ from sklearn.utils import shuffle
 
 # print('************* BLOGDATA ****************')
 
-DATA = np.genfromtxt('blogfeed.csv',delimiter=',')
+DATA = np.genfromtxt('Datasets/blogfeed.csv',delimiter=',')
 Xtr = DATA[:52397,:-1]
 ytr = DATA[:52397,-1]
 

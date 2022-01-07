@@ -115,7 +115,7 @@ def linesearch_newton(funct,n,x,d,gd,dhd,f,falfa1,\
     #115 continue
             if alfa <= fail:
                 fail_flag = True
-                print(' Linesearch failure GD=',gd,' GS=',gs)
+                print(' Linesearch failure GD=',gd)
                 return x,f,alfa,nf,k,fail_flag
 
 def linesearch_negcurv(funct,n,k,x,f,g,s,nf,gs,shs,alfa_old,\
@@ -345,23 +345,26 @@ def dir(funct,grad,hessdir,n,k,x,g,ng,ninoposdef,nitronc,iprint,hd_exact,c,t):
         #input()
 
         if eps*pnr2 <= np.double(1.e-16): #np.finfo(dtype=np.float).eps**2:
-            if iprint >= 1:
+            if iprint >= 0:
                 print(' * norm of s_k is too small *')
                 print(' kint = ',kint)
                 print('  pnorm^2 = ',pnr2,'  den = ',den)
+
             if kint == 1:
                 igrad = True
                 dp = -g.clone().detach()
+            input()
             break
             #goto 6
         if np.abs(den) < eps:
             isingular = True
-            if iprint >= 1:
+            if iprint >= 0:
                 print(' * hessian matrix is singular *')
                 print(' kint = ',kint)
             if kint == 1:
                 igrad = True
                 dp = -g.clone().detach()
+            input()
             break
         rap = den
         max_rap = max(max_rap,rap)
@@ -385,11 +388,14 @@ def dir(funct,grad,hessdir,n,k,x,g,ng,ninoposdef,nitronc,iprint,hd_exact,c,t):
         #-----------------------------
         #calcolo nuova direzione
         #-----------------------------
-        
+
         if den <= -eps:
             if c == "Curv":
                 ninoposdef += 1
             else:
+                if kint == 1:
+                    with torch.no_grad():
+                        dp += p
                 break               # no curv
             with torch.no_grad():
                     dn += - alfa*p
@@ -615,9 +621,8 @@ def NWTNM(funct,grad,hessdir,x,gmin,maxls,max_time,iprint,satura,hd_exact,name,r
 			#print('NWTNM: g=',g)
 			ng += 1
 			g_norm = g.norm().item()
-
-# 			if iprint >= 0:
-# 				print(' K=%5d  KTOT=%5d  Nf=%5d  Ng=%6d  Nint=%9d  f=%12.5e  g_norm=%12.5e time=%9.2f' % (k,ktot+k,nf,ng,nitertot,f,g_norm,time.time()-start_time))
+			if iprint >= 0:
+				print(' K=%5d  KTOT=%5d  Nf=%5d  Ng=%6d  Nint=%9d  f=%12.5e  g_norm=%12.5e time=%9.2f' % (k,ktot+k,nf,ng,nitertot,f,g_norm,time.time()-start_time))
 			global n_iter
 			n_iter = ktot+k
 
@@ -625,7 +630,7 @@ def NWTNM(funct,grad,hessdir,x,gmin,maxls,max_time,iprint,satura,hd_exact,name,r
 # 				print('')
 # 				print(' K=%5d  KTOT=%5d  Nf=%5d  Ng=%6d  Nint=%9d  f=%12.5e  g_norm=%12.5e' % (k,ktot+k,nf,ng,nitertot,f,g_norm))
 # 				print('')
-                
+
 			if iprint >= 2:
 				print('x=',end='')
 				for i in range(x.numel()):
@@ -656,23 +661,25 @@ def NWTNM(funct,grad,hessdir,x,gmin,maxls,max_time,iprint,satura,hd_exact,name,r
 			if ((gmax <= gmin) or ((d_norm+s_norm) <= 1.e-16) or (k+ktot > maxls) or (time.time()-start_time > max_time) or
 				( not satura and ((torch.abs(f-fold)/torch.abs(fold) <= 1.e-2) or (gmax <= 1.e-1*g0max)) ) ):
 				if (iprint >= 0):
-					fid = open(t + "_" + c + '.txt','a')		
+					fid = open(t + "_" + c + '.txt','a')
 					print('%13s & %5d & %5d & %5d & %5d & %5d & %6d & %9d & %12.5e & %12.5e & %9.2f\\' % (name,r,nneu,k,ktot+k,nf,ng,nitertot,f,g_norm,time.time()-start_time),file=fid)
 					fid.close()
-# 					print('\n    ==================================================')
-# 					print(  '    CRITERIO DI ARRESTO SODDISFATTO CON NORMA INFINITO')
-# 					print(  '    ==================================================')
-# 					print('     f = %13.6e   gmin = %13.6e   gnr = %13.6e   gmax = %13.6e' % (f,gmin,g_norm,gmax))
-# 					print('     f = %13.6e   fold = %13.6e   f-fold/fold = %13.6e' % (f,fold,torch.abs(f-fold)/torch.abs(fold)))
-# 					print("negative curvature:", ninoposdef)
-                    
+					print('\n    ==================================================')
+					print(  '    CRITERIO DI ARRESTO SODDISFATTO CON NORMA INFINITO')
+					print(  '    ==================================================')
+					print('     f = %13.6e   gmin = %13.6e   gnr = %13.6e   gmax = %13.6e' % (f,gmin,g_norm,gmax))
+					print('     f = %13.6e   fold = %13.6e   f-fold/fold = %13.6e' % (f,fold,torch.abs(f-fold)/torch.abs(fold)))
+					print('                  gmax = %13.6e   1.e-1*g0max = %13.6e' % (gmax,1.e-1*g0max))
+					print('     d_norm + s_norm = %13.6e' % (d_norm+s_norm))
+					print("negative curvature:", ninoposdef)
+
 				if not ifunct:
 					f = funct(x)
 					nf += 1
 					ifunct = True
 
 				if f.item() <= f_min.item() + 1.e-6*np.abs(f_min.item()):
-					return  f,x,k+ktot,nf,ng,ninoposdef,time.time()-start_time 
+					return  f,x,k+ktot,nf,ng,ninoposdef,time.time()-start_time
 				else:
 					#restart from the best point
 					if iprint > 0:
