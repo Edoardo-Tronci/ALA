@@ -6,9 +6,9 @@ sys.path.append('Datasets')
 import time
 import math
 import numpy as np
-import ALA_nonmon_mon as ott
 # import ALA_mon as ott
 # import ALA_nonmon as ott
+import ALA_nonmon_mon as ott
 import torch
 import matplotlib.pyplot as plt
 import importlib
@@ -53,13 +53,9 @@ neurons = [30, 40, 50]
 
 for t in trunc:
     for c in curv:
-        # fid = open("Results/" + t + "_" + c + '.txt','a')
-        # fid.truncate(0)
-        # print('         Name &  perm &  nneu &     K &  KTOT &    Nf &     Ng &      Nint &            f &       g_norm &      time\\\\\\\hline',file=fid)
-        # fid.close()
-        fid = open("Results/" + 'valore_iniziale.txt','a')
+        fid = open("Results/" + t + "_" + c + '.txt','a')
         fid.truncate(0)
-        print('         Name &  perm &  nneu & f_0\\\\\\\hline',file=fid)
+        print('         Name &  perm &  nneu &     K &  KTOT &    Nf &     Ng &      Nint &            f &       g_norm &      time\\\\\\\hline',file=fid)
         fid.close()
         for name in list_data_names:
             for r in random_seeds:
@@ -156,7 +152,6 @@ for t in trunc:
                              l2_reg += torch.norm(param)**2
                         loss += ro * l2_reg
                         return loss
-                    
                     
                     #################################
                     # define the variable array for
@@ -350,7 +345,7 @@ for t in trunc:
                                 print('%13s & %5d & %5d & %12.5e\\\\' % (name,r,nneu,f_0), file=fid)
                                 fid.close()
                                 #fstar,xstar,niter,nf,ng,nneg,timeparz = ott.NWTNM(fun_closure,grad,hessdir3,x,tol,maxiter,maxtim,iprint,satura,hd_exact)
-                                # fstar,xstar,niter,nf,ng,nneg,timeparz = ott.NWTNM(funct,grad,hessdir3,x,tol,maxiter,maxtim,iprint,satura,hd_exact,name,r,nneu,c,t)
+                                fstar,xstar,niter,nf,ng,nneg,timeparz = ott.NWTNM(funct,grad,hessdir3,x,tol,maxiter,maxtim,iprint,satura,hd_exact,name,r,nneu,c,t)
                             elif which_algo == 'sgd':
                                 optimizer = torch.optim.SGD(net.parameters(), lr=0.01)
                     
