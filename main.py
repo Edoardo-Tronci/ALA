@@ -52,7 +52,7 @@ for t in trunc:
     for c in curv:
         fid = open("Results/" + t + "_" + c + '.txt','a')
         fid.truncate(0)
-        print('         Name &  perm &  nneu &     K &  KTOT &    Nf &     Ng &      Nint &            f_0 &            f &       g_norm &      time\\\\\\\hline',file=fid)
+        print('         Name &  perm &  nneu &     K &  KTOT &    Nf &     Ng &      Nint &          f_0 &            f &       g_norm &      time\\\\\\\hline',file=fid)
         fid.close()
         for name in list_data_names:
             for r in random_seeds:
