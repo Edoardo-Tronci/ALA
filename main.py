@@ -1,7 +1,7 @@
 from sklearn.metrics import mean_squared_error
 from tqdm import tqdm
 import sys
-sys.path.append('../Datasets')
+sys.path.append('Datasets')
 
 import time
 import math
