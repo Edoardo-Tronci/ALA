@@ -9,7 +9,7 @@ from sklearn.utils import shuffle
 
 # print('******* BOSTON HOUSE PRICES ***********')
 
-housesal = fetch_openml(name='boston_house',version=1,as_frame=True)
+housesal = fetch_openml(name='house_sales',version=1,as_frame=True)
 
 # print(housesal.data.shape)
 # print(housesal.details['version'])
